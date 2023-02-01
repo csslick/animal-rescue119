@@ -29,7 +29,9 @@ function App() {
   return (
     <div className='App'>
       <h1>부산시 동물구조 현황</h1>
-      <Items animals={animals} /> 
+      {
+        (animals.length > 0) ?  <Items animals={animals} /> : (<p>'로딩중...'</p>)
+      }
     </div>
   );
 }
