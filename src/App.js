@@ -29,10 +29,7 @@ function App() {
   return (
     <div className='App'>
       <h1>부산시 동물구조 현황</h1>
-      {
-        animals ?  <Items animals={animals} /> : (<p>'로딩중...'</p>)
-      }
-      
+      <Items animals={animals} /> 
     </div>
   );
 }
