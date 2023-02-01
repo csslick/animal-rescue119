@@ -28,7 +28,7 @@ function App() {
   console.log('animals = ', animals)
   return (
     <div className='App'>
-      <h1>부산시 동물구조 현황</h1>
+      <h1>동물구조 현황(부산)</h1>
       {
         (animals.length > 0) ?  <Items animals={animals} /> : (<p>'로딩중...'</p>)
       }
