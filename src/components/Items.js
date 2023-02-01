@@ -7,7 +7,7 @@ export default function Items({animals}) {
       {
         animals.map((animal, key) => {
           return (
-            <div class='item'>
+            <div className='item' key={key}>
               <figure>
                 <img src={animal.ty3Picture} alt={animal.ty3Kind} />
               </figure>
