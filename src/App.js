@@ -30,7 +30,7 @@ function App() {
     <div className='App'>
       <h1>동물구조 현황(부산)</h1>
       {
-        (animals.length > 0) ?  <Items animals={animals} /> : (<p>'로딩중...'</p>)
+        (animals.length > 0) ?  <Items animals={animals} /> : (<p>로딩중...</p>)
       }
     </div>
   );
