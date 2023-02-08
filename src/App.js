@@ -8,9 +8,8 @@ function App() {
   const [pageNo, setPageNo] = useState(1);  // 페이지번호
   const [maxPages, setMaxPages] = useState(0); // 마지막 페이지
   const [rows, setRows] = useState(10); // 화면당 글수
-  // const [process, setProcess] = useState('전체')
   const [search, setSearch] = useState(''); // 검색어
-  const inputRef = useRef();
+  const inputRef = useRef(); // 검색창 요소의 위치 참조
 
   // 진행상황별 요청
   const filterAnimalData = () => {
@@ -87,12 +86,13 @@ function App() {
       <h1>동물구조 현황(부산)</h1>
       <form onSubmit={ (e) => {
         e.preventDefault();
-        let val = inputRef.current.value;
+        // 입력창에 입력된 값 참조(ref={inputRef})
+        let val = inputRef.current.value; // input 값
         console.log(val)
         if(val == '') {
-          setSearch(val)
+          setSearch(val);  // 아무 입력입 없을 때
         } else {
-          setSearch(`&sj=${val}`);
+          setSearch(`&sj=${val}`); // 입력값이 있으면
         }  
         setPageNo(1)
       }}>
@@ -110,7 +110,7 @@ function App() {
       <span> | </span>
       <a href="#" onClick={nextPage}>다음 페이지</a>
       {
-        (animals.length > 0) ?  <Items animals={animals} /> : (<p>로딩중...</p>)
+        (animals.length > 0) ?  <Items animals={animals} /> : (<p>자료가 없습니다.</p>)
       }
       {/* 페이징 */}
       <p>Page: {pageNo} / {maxPages}</p>
