@@ -11,34 +11,6 @@ function App() {
   const [search, setSearch] = useState(''); // 검색어
   const inputRef = useRef(); // 검색창 요소의 위치 참조
 
-  // 진행상황별 요청
-  const filterAnimalData = () => {
-    console.log(`process = ${process}`)
-    const API_KEY = `sXxYjidiN3t6GurP%2FlL532W8cmmt4qCl%2F%2BFF72uNIWACqGGmumk6enycmK39NmiGxpmGhhxqFXvWYu4zH8f3zg%3D%3D`;
-    const API_URL = `https://apis.data.go.kr/6260000/BusanPetAnimalInfoService/getPetAnimalInfo?serviceKey=${API_KEY}&numOfRows=${rows}&pageNo=${pageNo}&resultType=json${search}`;
-    fetch(API_URL)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data.getPetAnimalInfo.body)
-        const items = data.getPetAnimalInfo.body.items.item;
-        // 옵션에 해당하는 데이터만 state에 저장
-        if(process !== '전체') {
-          let copy = items.filter(item => process === item.ty3Process)
-          setAnimals(copy);
-        } else {
-          setAnimals(items);
-        }
-        
-        // 전체글
-        setTotalCount(data.getPetAnimalInfo.body.totalCount);
-        // 마지막 페이지(총게시물 / 행수)
-        setMaxPages(Math.ceil(totalCount / rows))
-      })
-      .catch(() => {
-        console.log('데이터 요청 에러')
-      })
-  }  
-
   // 페이지당 요청
   const getAnimalData = () => {
     const API_KEY = `sXxYjidiN3t6GurP%2FlL532W8cmmt4qCl%2F%2BFF72uNIWACqGGmumk6enycmK39NmiGxpmGhhxqFXvWYu4zH8f3zg%3D%3D`;
