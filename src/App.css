@@ -39,3 +39,12 @@ figure {
   height: 100%;
   object-fit: cover;
 }
+
+nav {
+  text-align: center;
+  border-bottom: 1px solid #000;
+  padding: 10px;
+}
+nav a {
+  padding: 5px 2rem;
+}
